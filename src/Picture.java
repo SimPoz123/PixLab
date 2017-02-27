@@ -9,7 +9,7 @@ import java.util.List; // resolves problem with java.awt.List and java.util.List
 /**
  * A class that represents a picture. This class inherits from SimplePicture and
  * allows the student to add functionality to the Picture class.
- * 
+ *
  * @author Barbara Ericson ericson@cc.gatech.edu
  */
 public class Picture extends SimplePicture {
@@ -28,7 +28,7 @@ public class Picture extends SimplePicture {
 
 	/**
 	 * Constructor that takes a file name and creates the picture
-	 * 
+	 *
 	 * @param fileName
 	 *            the name of the file to create the picture from
 	 */
@@ -39,7 +39,7 @@ public class Picture extends SimplePicture {
 
 	/**
 	 * Constructor that takes the width and height
-	 * 
+	 *
 	 * @param height
 	 *            the height of the desired picture
 	 * @param width
@@ -52,7 +52,7 @@ public class Picture extends SimplePicture {
 
 	/**
 	 * Constructor that takes a picture and creates a copy of that picture
-	 * 
+	 *
 	 * @param copyPicture
 	 *            the picture to copy
 	 */
@@ -63,7 +63,7 @@ public class Picture extends SimplePicture {
 
 	/**
 	 * Constructor that takes a buffered image
-	 * 
+	 *
 	 * @param image
 	 *            the buffered image to use
 	 */
@@ -75,7 +75,7 @@ public class Picture extends SimplePicture {
 
 	/**
 	 * Method to return a string with information about this picture.
-	 * 
+	 *
 	 * @return a string with information about the picture such as fileName,
 	 *         height and width.
 	 */
@@ -91,6 +91,39 @@ public class Picture extends SimplePicture {
 		for (Pixel[] rowArray : pixels) {
 			for (Pixel pixelObj : rowArray) {
 				pixelObj.setBlue(0);
+			}
+		}
+	}
+
+	public void keepOnlyBlue() {
+		Pixel[][] pixels = this.getPixels2D();
+		for(Pixel[] rowArray : pixels) {
+			for (Pixel pixelObj : rowArray) {
+				pixelObj.setRed(0);
+				pixelObj.setGreen(0);
+			}
+		}
+	}
+
+	public void negate() {
+		Pixel[][] pixels = this.getPixels2D();
+		for(Pixel[] rowArray : pixels) {
+			for (Pixel pixelObj : rowArray) {
+				pixelObj.setBlue(pixelObj.getBlue() - 255);
+				pixelObj.setRed(pixelObj.getRed() - 255);
+				pixelObj.setGreen(pixelObj.getGreen() - 255);
+			}
+		}
+	}
+
+	public void grayscale() {
+		Pixel[][] pixels = this.getPixels2D();
+		for(Pixel[] rowArray : pixels) {
+			for (Pixel pixelObj : rowArray) {
+				int average = (pixelObj.getBlue() + pixelObj.getRed() + pixelObj.getGreen()) / 3;
+				pixelObj.setBlue(average);
+				pixelObj.setRed(average);
+				pixelObj.setGreen(average);
 			}
 		}
 	}
@@ -136,7 +169,7 @@ public class Picture extends SimplePicture {
 	/**
 	 * copy from the passed fromPic to the specified startRow and startCol in
 	 * the current picture
-	 * 
+	 *
 	 * @param fromPic
 	 *            the picture to copy from
 	 * @param startRow
@@ -178,7 +211,7 @@ public class Picture extends SimplePicture {
 
 	/**
 	 * Method to show large changes in color
-	 * 
+	 *
 	 * @param edgeDist
 	 *            the distance for finding edges
 	 */

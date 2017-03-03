@@ -99,6 +99,23 @@ public class PictureTester
     canvas.explore();
   }
 
+  public static void testCopyFrom() {
+    Picture flower1 = new Picture("flower1.jpg");
+    Picture canvas = new Picture("640x480.jpg");
+    canvas.explore();
+    canvas.copy(flower1,0,0);
+    canvas.explore();
+    canvas.copyFrom(new Picture("flower1.jpg"), 0, 0, 30, 30, 0, 0);
+    canvas.explore();
+  }
+
+  public static void testMyCollage() {
+    Picture canvas = new Picture("640x480.jpg");
+    canvas.myCollage();
+    canvas.explore();
+  }
+
+
   /** Method to test edgeDetection */
   public static void testEdgeDetection()
   {
@@ -124,10 +141,12 @@ public class PictureTester
     // testMirrorVertical();
     // testMirrorTemple();
     // testMirrorArms();
-    testMirrorGull();
+    // testMirrorGull();
     //testMirrorDiagonal();
     // testCollage();
+    testMyCollage();
     //testCopy();
+    // testCopyFrom();
     //testEdgeDetection();
     //testEdgeDetection2();
     //testChromakey();
@@ -138,7 +157,6 @@ public class PictureTester
     //testGetAverageForColumn(0);
     // testKeepOnlyBlue();
     // testNegate();
-    // testGrayscale();
     // testMirrorVerticalRightToLeft();
     // testMirrorHorizontal();
     // testMirrorHorizontalBotToTop();
